@@ -4,6 +4,7 @@ from keycodes import *
 
 # IBM SK-8845 filter
 
+
 class SK8845MessageFilter:
     def __init__(self):
         self.logger = logging.getLogger(__class__.__name__)
