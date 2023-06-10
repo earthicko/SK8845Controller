@@ -18,25 +18,25 @@ class HIDDevice:
         loop.add_reader(self.hidraw_file, self.hidraw_event)
         self.logger.debug(f"HID Device {self.device_id} created")
 
-    def hidraw_event(self):
-        if self.hidraw_file is None:
+    def hidraw_event(self) -> None:
+        if self.hidraw_file == -1:
             return
         try:
             msg = os.read(self.hidraw_file, 16)
-        except Exception:
+        except OSError:
             self.loop.remove_reader(self.hidraw_file)
             os.close(self.hidraw_file)
-            self.hidraw_file = None
+            self.hidraw_file = -1
             self.logger.error(
                 f"HID device {self.device_id} exception on read. closing")
             return
         tm = self.filter.filter_message_to_host(msg)
         self.logger.debug(f"hid raw event filtered {tm}")
 
-    def __eq__(self, other):
+    def __eq__(self, other) -> bool:
         return self.device_id == other.device_id
 
-    def __del__(self):
+    def __del__(self) -> None:
         self.logger.debug(f"HID Device {self.device_id} removed")
 
 
