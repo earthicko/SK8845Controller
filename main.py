@@ -6,7 +6,6 @@ import logging
 import logging.config
 import asyncio_glib
 
-from dasbus.connection import SystemMessageBus
 from hid_devices import HIDDeviceRegistry
 
 if __name__ == "__main__":
@@ -19,6 +18,5 @@ if __name__ == "__main__":
     asyncio.set_event_loop_policy(asyncio_glib.GLibEventLoopPolicy())
     loop = asyncio.get_event_loop()
     loop.add_signal_handler(SIGINT, sys.exit)
-    bus = SystemMessageBus()
     hid_devices = HIDDeviceRegistry(loop)
     loop.run_forever()
