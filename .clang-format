@@ -1,0 +1,13 @@
+---
+BasedOnStyle: Microsoft
+AlwaysBreakTemplateDeclarations: 'Yes'
+BinPackArguments: 'false'
+BinPackParameters: 'false'
+BreakBeforeBinaryOperators: All
+BreakConstructorInitializers: BeforeComma
+ColumnLimit: '80'
+ConstructorInitializerAllOnOneLineOrOnePerLine: 'false'
+Standard: Cpp03
+TabWidth: '4'
+UseTab: ForContinuationAndIndentation
+...
