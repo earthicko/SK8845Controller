@@ -1,2 +1,2 @@
-venv/*
-.idea/*
+*.o
+hid_to_i2c_relay
