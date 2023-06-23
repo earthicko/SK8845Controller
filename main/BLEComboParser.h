@@ -45,25 +45,31 @@
 #define KEY_ARDUINO_F21 (KEY_F21 + ARDUINO_KEYCODE_OFFSET)
 #define KEY_ARDUINO_F22 (KEY_F22 + ARDUINO_KEYCODE_OFFSET)
 
-#define HANDLE_KEY(condition, keycode) \
-    if (condition) {                   \
-        keyPress(keycode);             \
-    } else {                           \
-        keyRelease(keycode);           \
-    }
+#define HANDLE_KEY(condition, keycode)                                         \
+	if (condition)                                                             \
+	{                                                                          \
+		keyPress(keycode);                                                     \
+	}                                                                          \
+	else                                                                       \
+	{                                                                          \
+		keyRelease(keycode);                                                   \
+	}
 
-class BLEComboParser : public BLECombo {
-public:
-    BLEComboParser(std::string deviceName = "ESP32 Combo", std::string deviceManufacturer = "Espressif", uint8_t batteryLevel = 90);
-    void parseHIDDataKeyboard(const int8_t* buf);
-    void parseHIDDataMouse(const int8_t* buf);
+class BLEComboParser : public BLECombo
+{
+  public:
+	BLEComboParser(std::string deviceName = "ESP32 Combo",
+				   std::string deviceManufacturer = "Espressif",
+				   uint8_t batteryLevel = 90);
+	void parseHIDDataKeyboard(const int8_t *buf);
+	void parseHIDDataMouse(const int8_t *buf);
 
-private:
-    void handleMouse1(const int8_t* buf);
-    void handleMouse2(const int8_t* buf);
-    void handleMouse3(const int8_t* buf);
+  private:
+	void handleMouse1(const int8_t *buf);
+	void handleMouse2(const int8_t *buf);
+	void handleMouse3(const int8_t *buf);
 };
 
-typedef void (BLEComboParser::*parser_t)(const int8_t*);
+typedef void (BLEComboParser::*parser_t)(const int8_t *);
 
 #endif
