@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 
-#define _DEBUG
+// #define _DEBUG
 
 #ifdef _DEBUG
 #define DEBUG_PRINTF(...) printf(__VA_ARGS__)
