@@ -13,7 +13,7 @@ $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $@ $(LDFLAGS)
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(SRV)
 
 fclean: clean
 	$(RM) $(NAME)
